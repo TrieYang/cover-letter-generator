@@ -1,0 +1,15 @@
+.main-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0; /* Replace with your desired background color */
+  }
+  
+  .content-box {
+    background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent dark background */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  

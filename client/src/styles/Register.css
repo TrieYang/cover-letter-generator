@@ -1,0 +1,31 @@
+.register-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f0f0f0; /* Replace with your desired background color */
+}
+
+.register-box {
+  background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent dark background */
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.input-field {
+  margin: 10px 0;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+}
+
+.register-button {
+  width: 100%;
+  padding: 10px;
+  background-color: #00bfa6; /* Adjust the color to match the screenshot */
+  border: none;
+  border-radius: 4px;
+  color: white;
+  font-weight: bold;
+}

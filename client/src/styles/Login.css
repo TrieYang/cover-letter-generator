@@ -1,0 +1,75 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffff00; /* You can set this to transparent or a specific color if needed */
+}
+
+.box {
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.8); /* Slightly more opaque for better contrast */
+  padding: 30px 40px; /* Increased padding for more spacing */
+  border-radius: 12px; /* Softer corners */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Slightly stronger shadow */
+  width: 300px; /* Fixed width for consistency */
+  height:400px;
+  
+}
+
+.logo {
+  margin-top: 45px;
+  width: 48px; /* Set a fixed size for the logo */
+  margin-bottom: 30px; /* Space below the logo */
+}
+
+.input-field {
+  margin-top: 20px;
+  padding: 10px;
+  box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.5); /* Adjust the shadow to be softer */
+  transition: box-shadow 0.9s ease;
+  width:85%;
+  border:#009e8b;
+  border-radius: 6px;
+  background-color: rgba(255, 255, 255, 0.1); /* Slightly transparent background */
+  color: white; /* White text */
+}
+
+.input-field::placeholder {
+  color: rgba(255, 255, 255, 0.7); /* Lighter placeholder text */
+}
+
+.input-field:focus {
+  
+  outline-color: #009e8b;
+}
+
+.button {
+  padding: 12px;
+  width: 60%;
+  background-color: #00bfa6; /* Match the color */
+  border: none;
+  border-radius: 6px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s; /* Smooth transition */
+  margin-top: 35px;
+  font-size: 16px;
+}
+
+.button:hover {
+  background-color: #009e8b; /* Slightly darker on hover */
+}
+
+.register-link {
+  display: block;
+  margin-top: 15px;
+  color: #00bfa6;
+  text-decoration: none; /* Remove underline */
+}
+
+.register-link:hover {
+  text-decoration: underline; /* Underline on hover */
+}
