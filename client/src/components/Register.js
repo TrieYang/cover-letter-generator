@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import '../styles/Register.css';  // Ensure the correct CSS file is imported
+import '../styles/Register.css';
+import '../styles/Login.css';   // Ensure the correct CSS file is imported
 import { useNavigate } from 'react-router-dom';
 
 const Register = () => {
@@ -32,6 +33,7 @@ const Register = () => {
       const data = await response.json();
       setSuccess('User registered successfully!');
       setError('');
+      localStorage.setItem('token', data.token);
       navigate('/main'); // Redirect to the main page
     } catch (error) {
       setError(error.message);

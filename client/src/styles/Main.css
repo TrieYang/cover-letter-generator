@@ -1,15 +1,35 @@
-.main-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #f0f0f0; /* Replace with your desired background color */
-  }
-  
-  .content-box {
-    background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent dark background */
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  }
+
+
+h2 {
+  color: #fff;
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.add-info-link {
+  display: block;
+  color: #00aaff;
+  text-decoration: none;
+  margin-bottom: 10px;
+}
+
+.button {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.generate-button {
+  background-color: #4a4a4a;
+  color: #b0b0b0;
+}
+
+.logout-button {
+  background-color: #00ffaa;
+  color: #fff;
+}
+
   

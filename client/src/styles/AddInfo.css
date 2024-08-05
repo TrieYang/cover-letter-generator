@@ -1,0 +1,55 @@
+
+  h2 {
+    color: white;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .textarea-field {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 5px;
+    box-sizing: border-box;
+  }
+  
+  
+  .textarea-field {
+    height: 150px;
+    resize: none;
+    background-color: #525252d5;
+    
+  }
+  
+  .buttons {
+    display: flex;
+    justify-content: space-between;
+    width: 220px;
+  }
+  
+  .button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .save-button {
+    background-color: #00bfa6;
+    color: white;
+    width:45%;
+  }
+  
+  .cancel-button {
+    background-color: #00bfa6;
+    color: white;
+    width:45%;
+  }
+
+
+  
+
+  
+
+  

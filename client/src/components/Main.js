@@ -1,6 +1,6 @@
 import React from 'react';
 import '../styles/Main.css'; // Make sure to create and import the CSS file
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 const Main = () => {
   const navigate = useNavigate();
@@ -18,13 +18,13 @@ const Main = () => {
           <option>Choose from Drop Down...</option>
           {/* Add your options here */}
         </select>
-        <a href="#" className="add-info-link">Add new info</a>
+        <Link to="/add" className="add-info-link">Add new info</Link>
         <select className="input-field">
           <option>Genuine and Passionate tone</option>
           {/* Add your options here */}
         </select>
-        <button className="button generate-button" disabled>GENERATE</button>
-        <button className="button logout-button" onClick={handleLogout}>LOG OUT</button>
+        <button className="button" disabled>GENERATE</button>
+        <button className="button" onClick={handleLogout}>LOG OUT</button>
       </div>
     </div>
   );
