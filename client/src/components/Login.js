@@ -30,6 +30,7 @@ const Login = () => {
 
       const data = await response.json();
       localStorage.setItem('token', data.token);
+      console.log('Token stored:', localStorage.getItem('token'));
       setError('');
       navigate('/main'); // Redirect to the main page
     } catch (error) {
@@ -62,7 +63,6 @@ const Login = () => {
         <button type="submit" className="button">LOGIN</button>
         </form>
         <Link to="/register" className="register-link">Need an account? Sign up here</Link>
-      
       </div>
     </div>
   );

@@ -6,6 +6,7 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const authRoutes = require('./routes/auth');
+const infoRoutes = require('./routes/info');
 const authMiddleware = require('./middleware/authMiddleware');
 
 app.use(bodyParser.json());
@@ -29,6 +30,7 @@ mongoose.connect(mongoURI)
 
 
 app.use('/api/auth', authRoutes);
+app.use('/api/info', infoRoutes);
 
 // Protect the /main route with the authMiddleware
 app.get('/main', authMiddleware, (req, res) => {

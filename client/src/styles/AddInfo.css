@@ -40,6 +40,11 @@
     color: white;
     width:45%;
   }
+
+  .save-button.disabled {
+    background-color: grey;
+    cursor: not-allowed;
+  }
   
   .cancel-button {
     background-color: #00bfa6;
