@@ -1,6 +1,8 @@
+/* global chrome */
 import React, { useEffect, useState } from 'react';
 import '../styles/Main.css'; // Make sure to create and import the CSS file
 import { useNavigate, Link } from 'react-router-dom';
+
 
 const Main = () => {
   const navigate = useNavigate();
@@ -33,6 +35,18 @@ const Main = () => {
     fetchInfos();
   }, []);
 
+
+  const handleGenerate = () => {
+    chrome.runtime.sendMessage({ message: "startScraping" }, (response) => {
+      if (chrome.runtime.lastError) {
+        console.error("Error sending message:", chrome.runtime.lastError);
+      } else {
+        console.log(response.status);
+      }
+    });
+  };
+
+
   const handleLogout = () => {
     localStorage.removeItem('token');
     navigate('/login');
@@ -53,7 +67,7 @@ const Main = () => {
           <option>Genuine and Passionate tone</option>
           {/* Add your options here */}
         </select>
-        <button className="button" disabled>GENERATE</button>
+        <button className="button" onClick={handleGenerate}>GENERATE</button>
         <button className="button" onClick={handleLogout}>LOG OUT</button>
       </div>
     </div>
