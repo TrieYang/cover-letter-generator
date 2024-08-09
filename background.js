@@ -35,6 +35,6 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 
   if (request.message === "scrapedHTML") {
     console.log("Received scraped HTML content in background script:");
-    console.log(request.html);
+    sendResponse({ status: "HTML received" });
   }
 });
