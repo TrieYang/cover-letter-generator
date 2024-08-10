@@ -41,57 +41,89 @@ const Main = () => {
     return encodeURIComponent(data);
   };
 
+  useEffect(() => {
+    // Define the message listener
+    const messageListener = (request, sender, sendResponse) => {
+      if (request.message === "scrapedHTML") {
+        alert("scrapedHTML!");
+        console.log("scrapedHTML received in main");
+        const scrapedHTML = compressData(request.html);
+        console.log("a html is ready to be sent");
+  
+        if (!selectedInfo) {
+          console.error("No info selected");
+          setLoading(false);
+          return;
+        }
+  
+        // Send the HTML content and selected info to your server
+        fetch('http://localhost:5001/api/generate-cover-letter', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            html: scrapedHTML,
+            info: selectedInfo.content
+          })
+        })
+        .then(res => {
+          console.log("a result was received");
+          if (!res.ok) {
+            throw new Error('Network response was not ok');
+          }
+          return res.blob();
+        })
+        .then(blob => {
+          setLoading(false); // Hide loading animation once the blob is received
+          // Create a link to download the PDF
+          const url = window.URL.createObjectURL(new Blob([blob]));
+          const link = document.createElement('a');
+          link.href = url;
+          link.setAttribute('download', 'Cover_Letter.pdf');
+          document.body.appendChild(link);
+          link.click();
+          link.parentNode.removeChild(link);
+          setLoading(false);
+        })
+        .catch(error => console.error("Error generating cover letter:", error));
+        
+      }
+    };
+  
+    // Add the message listener
+    chrome.runtime.onMessage.addListener(messageListener);
+  
+    // Cleanup function to remove the listener
+    return () => {
+      chrome.runtime.onMessage.removeListener(messageListener);
+    };
+  }, [selectedInfo]); // Dependency array includes selectedInfo to re-run the effect when it changes
+  
+  
+
   const handleGenerate = () => {
     setLoading(true); // Show loading animation
+    
     chrome.runtime.sendMessage({ message: "startScraping" }, (response) => {
       if (chrome.runtime.lastError) {
         console.error("Error sending message:", chrome.runtime.lastError);
         setLoading(false);
-      } else {
-        if (response.status === "Scraping started") {
-          // Fetch the scraped HTML content from the background script
-          chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-            if (request.message === "scrapedHTML") {
-              console.log("scrapedHTML received in main");
-              const scrapedHTML = compressData(request.html);
-              console.log("a html is ready to be sent");
-              // Send the HTML content and selected info to your server
-              fetch('http://localhost:5001/api/generate-cover-letter', {
-                method: 'POST',
-                headers: {
-                  'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                  html: scrapedHTML,
-                  info: selectedInfo.content
-                })
-              })
-              .then(res => {
-                console.log("a result was received");
-                if (!res.ok) {
-                  throw new Error('Network response was not ok');
-                }
-                return res.blob();
-              })
-              .then(blob => {
-                setLoading(false); // Hide loading animation once the blob is received
-                // Create a link to download the PDF
-                const url = window.URL.createObjectURL(new Blob([blob]));
-                const link = document.createElement('a');
-                link.href = url;
-                link.setAttribute('download', 'Cover_Letter.pdf');
-                document.body.appendChild(link);
-                link.click();
-                link.parentNode.removeChild(link);
-              })
-              .catch(error => console.error("Error generating cover letter:", error));
-              setLoading(false);
-          }
-          });
-        }
+        return;
+      }
+  
+      if (response.status === "No active tab found") {
+        setLoading(false);
+        alert("No Tab identified. Please give your job posting page a click to help us identify what job you are applying for");
+        return;
+      }
+  
+      if (response.status === "Scraping started") {
+        console.log("Hi");
       }
     });
   };
+  
 
 
 
@@ -119,6 +151,7 @@ const Main = () => {
   const selectedId = e.target.value;
   const info = infos.find(info => info._id === selectedId);
   setSelectedInfo(info); // Set the entire info object
+  console.log(info);
 }}>
           <option>Choose from Drop Down...</option>
           {infos.map(info => (

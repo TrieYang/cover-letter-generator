@@ -1,7 +1,5 @@
 // background.js
 
-console.log("Background script loaded");
-
 // Listener for messages from the React component
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   if (request.message === "startScraping") {
@@ -33,8 +31,4 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     return true; // Keeps the message channel open to send a response asynchronously
   }
 
-  if (request.message === "scrapedHTML") {
-    console.log("Received scraped HTML content in background script:");
-    sendResponse({ status: "HTML received" });
-  }
 });

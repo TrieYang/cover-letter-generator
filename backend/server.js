@@ -19,6 +19,37 @@ const authMiddleware = require('./middleware/authMiddleware');
 
 const { convert } = require('html-to-text');
 
+const defaultFormat = `
+
+Opening Paragraph:
+- Who are you? (Professionally speaking).
+- Why are you writing this letter? (What job are you applying to?)
+- What do you know about the organization and/or role and why do you want to work there?
+- Why are you a good fit for this role?
+
+Body Paragraph #1:
+- Pick a qualification/requirement from the job description.
+  - How do you satisfy this qualification/requirement?
+  - Can you provide an example to support your claim?
+  - How does the example provided translate to the organization/job you are applying for?
+    - How will this help you succeed in the role you are applying for?
+    - How will this help you contribute and add value to their organization and/or research?
+
+Body Paragraph #2:
+- Pick a qualification/requirement from the job description.
+  - How do you satisfy this qualification/requirement?
+  - Can you provide an example to support your claim?
+  - How does the example provided translate to the organization/job you are applying for?
+    - How will this help you succeed in the role you are applying for?
+    - How will this help you contribute and add value to their organization and/or research?
+
+Conclusion Paragraph:
+- Thank the individual for reviewing your application.
+- Reiterate your interests.
+- Summarize briefly why you are a good fit for the role and how you can add value.
+- Add a call to action! Tell the employer how they can reach you for an interview by providing the Science Co-op program’s contact information.
+- Sign off
+`;
 
 
 
