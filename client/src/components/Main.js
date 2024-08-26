@@ -45,7 +45,7 @@ const Main = () => {
     // Define the message listener
     const messageListener = (request, sender, sendResponse) => {
       if (request.message === "scrapedHTML") {
-        alert("scrapedHTML!");
+        
         console.log("scrapedHTML received in main");
         const scrapedHTML = compressData(request.html);
         console.log("a html is ready to be sent");
@@ -163,7 +163,7 @@ const Main = () => {
           <option>Genuine and Passionate tone</option>
           {/* Add your options here */}
         </select>
-        <button className="button" onClick={handleGenerate}>GENERATE</button>
+        <button className="button" onClick={handleGenerate} disabled={!selectedInfo||loading}>GENERATE</button>
         <button className="button" onClick={handleLogout}>LOG OUT</button>
       </div>
     </div>

@@ -99,6 +99,7 @@ app.post('/api/generate-cover-letter', async (req, res) => {
         { selector: 'meta', format: 'skip' },
         { selector: 'link', format: 'skip' },
         { selector: 'img', format: 'skip' },
+        { selector: 'footer', format: 'skip' },
         { selector: 'a', options: { ignoreHref: true } },
       ],
       ignoreImage: true,
@@ -126,14 +127,14 @@ app.post('/api/generate-cover-letter', async (req, res) => {
       messages: [
         {
           role: "system",
-          content: "You are a helpful assistant that generates one-page cover letters in html format that will be directly used to make a pdf so no extra words besides the cover letter needed."
+          content: "You are a helpful assistant that generates one-page cover letters following a specific html format that will be directly used to make a pdf so no extra words besides the cover letter needed."
         },
         {
           role: "user",
           content: `Generate a cover letter using the following info:
           \n\nJOB POST HTML:\n${summarizedText}
           \n\nPERSONAL Info:\n${info}
-          \n\nTemplate:\n${defaultFormat}
+          \n\nContent Template:\n${defaultFormat}
           \n\nDate:${currentDate}
           \n\nFormat: <!DOCTYPE html>
           <html lang="en">
@@ -194,7 +195,7 @@ app.post('/api/generate-cover-letter', async (req, res) => {
             \n`,
         }
       ],
-      max_tokens: 120, // Adjust the number of tokens as needed
+      max_tokens: 1200, // Adjust the number of tokens as needed
       temperature: 0.7
     };
     

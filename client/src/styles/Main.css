@@ -51,3 +51,10 @@ h2 {
   text-align: center;
   color: white;
 }
+
+.button:disabled {
+  background-color: grey;
+  cursor: not-allowed;
+  color: white; /* Optional: Change text color if needed */
+  opacity: 0.6; /* Optional: Make the button slightly transparent */
+}
