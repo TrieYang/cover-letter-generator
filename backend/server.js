@@ -115,7 +115,7 @@ app.post('/api/generate-cover-letter', async (req, res) => {
     const summarizedText = text.length > maxLength ? text.substring(0, maxLength) + '...' : text;
 
   // Replace the following with your actual OpenAI API key
-  const openaiApiKey = 'sk-JceXbQKQAoqdh-mLaBuq7ThkwkNEF1mJ6t_7F2nIeaT3BlbkFJCrVF4qU9lHMQ9THyn0gelmwihJZyloxUVrZ-78crAA';
+  const openaiApiKey = '';
   
 
   
